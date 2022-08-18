@@ -1,11 +1,15 @@
-from flask import flask
-from thereading import Thread
+from flask import Flask
+from threading import Thread
 
-app = Flask;('app')
+app = Flask('')
 
 @app.route('/')
-def maun():
-    return "Бот frog Bot запустился и работает"
-    
+def main():
+  return "Your bot is alive!"
+
 def run():
-    app.run(host="")
+    app.run(host="0.0.0.0", port=8080)
+
+def keep_alive():
+    server = Thread(target=run)
+    server.start()
